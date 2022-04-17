@@ -1,6 +1,16 @@
-const generatePage =() => 'Name: Jane, Github: Janehub';  //string
+// const profileDataArgs = process.argv.slice(2, process.argv.length);
+const fs = require ('fs')
+const generatePage = require('./src/page-template.js');
+const profileDataArgs = process.argv.slice(2); //?????????????
+console.log(profileDataArgs);
+const [name, github] = profileDataArgs; //??????????????///
 
-console.log(generatePage());
+
+fs.writeFile('index.html', generatePage(name, github),err =>{
+  if (err) {console.log(err)}
+  
+  console.log('Portfolio complete!Check out index.html to see the output!');
+});
 
 
 
